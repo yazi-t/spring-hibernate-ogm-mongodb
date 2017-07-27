@@ -1,0 +1,13 @@
+.navbar {
+    border-radius: 0;
+}
+.navbar-inverse {
+    background-color: #313238;
+    border-color: #313238;
+}
+.form-control {
+    border-radius: 0;
+}
+.btn {
+    border-radius: 0;
+}
