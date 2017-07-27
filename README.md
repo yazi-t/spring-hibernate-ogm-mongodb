@@ -18,13 +18,13 @@ It uses hibernate search for full text search.
 
 ## Screens
 ### Blog UI Post
-![Blog UI](/screens/screen01_ui.png?raw=true "Blog UI")
+<img src="screens/screen01_ui.png" alt="Blog UI" width="500px" class="inline"/>
 
 ### Blog UI View Comments
-![Blog UI](/screens/screen02_ui.png?raw=true "Blog UI")
+<img src="screens/screen02_ui.png" alt="Blog UI" width="500px" class="inline"/>
 
 ### Mongo CLI
-![Mongo CLI](/screens/screen03_mongo.png?raw=true "Mongo CLI")
+<img src="screens/screen03_mongo.png" alt="Mongo CLI" class="inline"/>
 
 ## Code
 ### Entity
