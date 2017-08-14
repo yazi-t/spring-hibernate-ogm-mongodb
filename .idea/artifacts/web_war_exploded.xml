@@ -80,7 +80,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/web/target/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/web/target/hibernate-ogm/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="web/web/Web" />
     </root>

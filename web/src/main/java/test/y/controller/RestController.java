@@ -15,9 +15,16 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * <p>This application demonstrates usage of hibernate OGM MongoDB provider
+ * with spring MVC. Application is a sample Blog web site which uses MongoDB
+ * as persistence store. This demo uses standard JPA annotations and methods to
+ * query data store.</p>
  *
+ * <p>Spring MVC based rest API to be connected to any third party application.</p>
  *
- * Created by yasitha on 5/15/17.
+ * @author Yasitha Thilakaratne
+ * Date: 04/25/2017
+ *
  */
 @Controller
 public class RestController extends ControllerBase {
@@ -27,6 +34,10 @@ public class RestController extends ControllerBase {
     @Autowired
     private PostService postService;
 
+    /**
+     * Serves all blog post list for incoming requests. Uses jackson json serializer.
+     * @return List of PostDTOs as json array
+     */
     @RequestMapping(value = "/json", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<PostDTO> json() {

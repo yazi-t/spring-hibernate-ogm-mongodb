@@ -24,10 +24,16 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * <p>
- * Hibernate OGM WEB APP
- * <p/>
- * Created by yasitha on 4/11/17.
+ * <p>This application demonstrates usage of hibernate OGM MongoDB provider
+ * with spring MVC. Application is a sample Blog web site which uses MongoDB
+ * as persistence store. This demo uses standard JPA annotations and methods to
+ * query data store.</p>
+ *
+ * <p>Controller that serves all blog web page related requests.</p>
+ *
+ * @author Yasitha Thilakaratne
+ * Date: 04/25/2017
+ *
  */
 @Controller
 public class SampleController extends ControllerBase {

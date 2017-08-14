@@ -12,7 +12,16 @@ import test.y.model.Post;
 import java.util.List;
 
 /**
- * Created by yasitha on 4/17/17.
+ * <p>This application demonstrates usage of hibernate OGM MongoDB provider
+ * with spring MVC. Application is a sample Blog web site which uses MongoDB
+ * as persistence store. This demo uses standard JPA annotations and methods to
+ * query data store.</p>
+ *
+ * <p>Service that handles blog post based business logic.</p>
+ *
+ * @author Yasitha Thilakaratne
+ * Date: 04/25/2017
+ *
  */
 @Transactional
 @Service("postService")

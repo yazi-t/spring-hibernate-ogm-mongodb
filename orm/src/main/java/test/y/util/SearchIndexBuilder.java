@@ -11,14 +11,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * <p>
- * Hibernate OGM
- * <p/>
+ * <p>This application demonstrates usage of hibernate OGM MongoDB provider
+ * with spring MVC. Application is a sample Blog web site which uses MongoDB
+ * as persistence store. This demo uses standard JPA annotations and methods to
+ * query data store.</p>
  *
- * Created by yasitha on 4/21/17.
+ * <p>This class rebuilds full text indexes of test.y.model.Post model in the
+ * time of application starting up.</p>
+ *
+ * @author Yasitha Thilakaratne
+ * Date: 04/25/2017
+ *
  */
 @Component
 public class SearchIndexBuilder {
+
+    /**
+     * Set this variable true to rebuild indexes asynchronously.
+     * Otherwise method call will wait until index rebuild to be finished
+     * to return.
+     */
+    private static final boolean BUILD_ASYNCHRONOUSLY = false;
 
     @PersistenceContext
     private EntityManager em;
@@ -28,14 +41,18 @@ public class SearchIndexBuilder {
         buildIndex(Post.class);
     }
 
+    /**
+     * @param clz list of model classes to rebuild indexes.
+     */
     public void buildIndex(Class... clz) {
         consoleLog("Index building started");
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(em);
         try {
-            fullTextEntityManager.createIndexer(clz).startAndWait();
-
-            //Asynchronous way
-            //fullTextEntityManager.createIndexer(clz).start();
+            if (BUILD_ASYNCHRONOUSLY) {
+                fullTextEntityManager.createIndexer(clz).start();
+            } else {
+                fullTextEntityManager.createIndexer(clz).startAndWait();
+            }
         } catch (Exception e) {
             consoleLog("ATTENTION!!! Index building was interrupted." + e.toString());
         }

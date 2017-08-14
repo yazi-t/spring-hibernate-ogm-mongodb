@@ -19,20 +19,45 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by yasitha on 4/17/17.
+ * <p>This application demonstrates usage of hibernate OGM MongoDB provider
+ * with spring MVC. Application is a sample Blog web site which uses MongoDB
+ * as persistence store. This demo uses standard JPA annotations and methods to
+ * query data store.</p>
+ *
+ * <p>Repository implementation that handles all data store persisting and retrieving.
+ * Uses JPA EntityManager</p>
+ *
+ * @author Yasitha Thilakaratne
+ * Date: 04/25/2017
+ *
  */
 @Transactional
 @Scope(proxyMode = ScopedProxyMode.INTERFACES)
 @Repository("postDao")
 public class PostDaoImpl implements PostDao {
 
+    /**
+     * Spring injected JPA EntityManager.
+     * Scope is managed by spring.
+     */
     @PersistenceContext
     private EntityManager em;
 
+    /**
+     * transaction manager to use if any JTA provider is used.
+     * Not used in this application currently.
+     */
     TransactionManager tm;
 
+    /**
+     * EntityManagerFactory if EntityManager not spring managed.
+     */
     EntityManagerFactory emf;
 
+    /**
+     * Initializing bean
+     * Here used to init JTA provider
+     */
     @PostConstruct
     private void init() {
         /*tm = com.arjuna.ats.jta.TransactionManager.transactionManager();
@@ -78,6 +103,11 @@ public class PostDaoImpl implements PostDao {
 
     @Override
     public void addComment(String postId, Comment comment) {
+        /*
+         * TODO: for now full post object fetched and updated embedded collection.
+         * Should update embedded collection without fetching full parent entity in the future with updated OGM releases.
+         */
+
         Query query = em.createQuery("FROM Post WHERE id = :id");
 
         query.setParameter("id", postId);

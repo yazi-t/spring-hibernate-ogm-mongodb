@@ -4,9 +4,16 @@ import javax.persistence.Embeddable;
 import java.util.Date;
 
 /**
+ * <p>This application demonstrates usage of hibernate OGM MongoDB provider
+ * with spring MVC. Application is a sample Blog web site which uses MongoDB
+ * as persistence store. This demo uses standard JPA annotations and methods to
+ * query data store.</p>
  *
+ * <p>Model class of comment to be used as embedded entity.</p>
  *
- * Created by yasitha on 4/19/17.
+ * @author Yasitha Thilakaratne
+ * Date: 04/25/2017
+ *
  */
 @Embeddable
 public class Comment {
